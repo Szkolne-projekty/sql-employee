@@ -6,7 +6,7 @@ WHERE SALARY > (SELECT SALARY FROM employees WHERE LAST_NAME = 'Bull');
 /* 2. Napisz zapytanie, aby znaleźć imię, nazwisko wszystkich pracowników, którzy pracują w dziale IT. */
 SELECT FIRST_NAME, LAST_NAME 
 FROM employees 
-WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM departments WHERE DEPARTMENT_NAME LIKE '%IT%');
+WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM departments WHERE DEPARTMENT_NAME LIKE 'IT');
 
 /* 3. Napisz zapytanie, aby znaleźć imię, nazwisko pracowników, którzy mają kierownika i pracowali w dziale w USA. */
 SELECT e.FIRST_NAME, e.LAST_NAME 
@@ -17,7 +17,7 @@ AND e.DEPARTMENT_ID IN (
   FROM departments d
   JOIN locations l ON d.LOCATION_ID = l.LOCATION_ID
   JOIN countries c ON l.COUNTRY_ID = c.COUNTRY_ID
-  WHERE c.COUNTRY_NAME = 'USA'
+  WHERE c.COUNTRY_NAME = 'United States of America'
 );
 
 /* 4. Napisz zapytanie, aby znaleźć imię, nazwisko pracowników, którzy są menedżerami. */
@@ -49,7 +49,7 @@ WHERE SALARY > (SELECT SALARY FROM employees WHERE LAST_NAME = 'Bell');
 /* 9. Napisz zapytanie, aby znaleźć imię, nazwisko i wynagrodzenie pracowników, którzy zarabiają tyle samo, co płaca minimalna dla wszystkich działów. */
 SELECT FIRST_NAME, LAST_NAME, SALARY 
 FROM employees 
-WHERE SALARY = (SELECT MIN(MIN_SALARY) FROM jobs);
+WHERE SALARY = (SELECT MIN(SALARY) FROM jobs);
 
 /* 10. Napisz zapytanie, aby znaleźć imię, nazwisko i wynagrodzenie pracowników, których wynagrodzenie jest wyższe niż średnia pensja wszystkich działów. */
 SELECT FIRST_NAME, LAST_NAME, SALARY 
